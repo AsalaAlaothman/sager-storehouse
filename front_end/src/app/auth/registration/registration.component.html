@@ -1,0 +1,69 @@
+<div class="row d-flex justify-content-center mt-5">
+  <div class="col-12 mt-5">
+    <div class="row  justify-content-center">
+      <div class="col-sm-8  d-flex justify-content-center mt-3">
+        <form class="mx-auto my-3" [formGroup]="registerForm" (submit)="register()">
+          <div class="row justify-content-center">
+            <div class="col-8  justify-content-center mt-3">
+              <img class="mx-auto" [src]="logo" alt="" style="width: auto;">
+
+            </div>
+            <div class="col-7  justify-content-center mt-3">
+              <label for="email">Email: </label>
+              <input type="email" class="form-control" formControlName="email" id="email" ngModel [email]="true"
+                required>
+              <div *ngIf=" registerForm.get('email')!.hasError('email')">
+                <span class="error" *ngIf="registerForm.get('email')!.hasError('email')">
+                  Please Enter Correct Email
+                </span>
+              </div>
+            </div>
+            <div class="col-7  justify-content-center mt-3">
+              <label for="name">Full Name: </label>
+              <input type="name" class="form-control" formControlName="name" id="name" ngModel [name]="true"
+                required>
+              <div *ngIf=" registerForm.get('name')!.hasError('name')">
+                <span class="error" *ngIf="registerForm.get('name')!.hasError('name')">
+                  Please Enter Correct Name
+                </span>
+              </div>
+            </div>
+            <div class="col-7 justify-content-center mt-3 ">
+              <label for="password">Password:  </label>
+              <div class=" input-group">
+                <input class="form-control border-right-0" [type]="input_type" formControlName="password" id="password"
+                  required minlength="8">
+                <span class=" bg-white ">
+                  <span class="input-group-text bg-transparent">
+                    <mat-icon id="eye_icon" class="" *ngIf="!is_visibility"
+                      (click)="password_visibility()">visibility</mat-icon>
+                    <mat-icon id="eye_icon" class="" *ngIf="is_visibility"
+                      (click)="password_visibility()">visibility_off</mat-icon>
+                  </span>
+
+                </span>
+              </div>
+              <span class="text-danger">*must be more than 8</span>
+
+            </div>
+            <div class="col-7 justify-content-center mt-3 ">
+              <label for="password_confirmation">Password Confirmation: </label>
+              <div class=" input-group">
+                <input class="form-control border-right-0" [type]="input_type" formControlName="password_confirmation" id="password_confirmation"
+                  required minlength="8">
+              </div>
+            </div>
+            <div *ngIf="errorMessages.length > 0" class="col-6 m-auto justify-content-center mt-3 alert alert-danger">
+              <ul>
+                <li *ngFor="let message of errorMessages">{{ message }}</li>
+              </ul>
+            </div>
+            <div class="col-7 m-3 text-end">
+              <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

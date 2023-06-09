@@ -1,0 +1,36 @@
+mat-card {
+  margin: 4%;
+  padding: 4%;
+}
+
+.card-button:hover {
+  cursor: pointer;
+  transform: scale(1.07);
+}
+
+
+
+.icon:hover {
+  cursor: pointer;
+  transform: scale(1.07);
+}
+
+mat-table
+{
+  --border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+
+  /* Don't change these properties */
+  border-spacing: 0;
+  border-collapse: separate;
+  border: var(--border);
+  overflow: hidden;
+
+}
+
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+
+}
+

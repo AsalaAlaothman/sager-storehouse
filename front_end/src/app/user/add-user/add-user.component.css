@@ -1,0 +1,13 @@
+.btn-primary{
+  background-color: #326b9f99;
+  border: transparent;
+}
+
+label{
+  color: white;
+  margin-bottom: 10px;
+}
+
+.error{
+  color:#720303;
+}

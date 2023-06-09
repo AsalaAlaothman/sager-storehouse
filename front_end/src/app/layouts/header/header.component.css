@@ -1,0 +1,28 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+mat-nav-list {
+  color: red;
+}
+.active {
+background-color: rgb(165, 161, 161);
+}
+
+.logo
+{
+  width: 100px;
+  border-radius: 50%;
+  margin: 15% 15%;
+  z-index: inherit;
+}
+
+

@@ -1,0 +1,7 @@
+a:hover {
+  cursor: pointer;
+  transform: scale(1.07);
+}
+
+a{  color: #ff0000;
+}
