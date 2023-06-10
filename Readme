@@ -1,5 +1,0 @@
-// why API Response Class
-
-1. The response will always be in JSON format.
-2. We will always return the data and metadata properties.
-3. We can customize the HTTP Code and headers if needed.
