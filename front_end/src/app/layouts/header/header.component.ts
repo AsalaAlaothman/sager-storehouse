@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   isAuthenticated: boolean = false;
   clinicName: string = 'Orchida';
-  clinic_logo: string = '../../../../assets/img/orichida.jpeg';
+  App_logo: string = this.apiService.mediaUrl+'/app-logo.png';
   private localStorageDataSubject: BehaviorSubject<string | null> =
     new BehaviorSubject<string | null>(null);
   public localStorageData$: Observable<string | null> =
@@ -29,7 +30,8 @@ export class HeaderComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private apiService :ApiService,
   ) {}
 
   ngOnInit() {

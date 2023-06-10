@@ -5,8 +5,10 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ApiService {
-  apiUrl: string = 'http://127.0.0.1:8000/api';
+  apiUrl: string = 'http://127.0.0.1:8001/api';
   authUrl: string = this.apiUrl + '/auth';
-  mediaUrl: string = 'http://127.0.0.1:8000/storage/admin-asset';
+  mediaUrl: string = 'http://127.0.0.1:8001/storage/admin-asset';
+  prodauctUrl: string = 'http://127.0.0.1:8001/storage';
+
   constructor() {}
 }

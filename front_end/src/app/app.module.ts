@@ -23,7 +23,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { UserComponent } from './user/user.component';
-import { EditUserComponent } from './User/edit-user/edit-user.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { CategoryComponent } from './category/category.component';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
+import { ProductComponent } from './product/product.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
+import { EditProductComponent } from './product/edit-product/edit-product.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UploadImageComponent } from './upload-image/upload-image.component';
+import { ConfirmationDialogComponent } from './layouts/confirmation-dialog-component/confirmation-dialog-component.component';
+import { HomeComponent } from './home/home.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -34,7 +45,17 @@ import { EditUserComponent } from './User/edit-user/edit-user.component';
     ResetPasswordComponent,
     UserComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    CategoryComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
+    ProductComponent,
+    AddProductComponent,
+    EditProductComponent,
+    UploadImageComponent,
+    UploadImageComponent,
+    ConfirmationDialogComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,14 +69,17 @@ import { EditUserComponent } from './User/edit-user/edit-user.component';
     MatToolbarModule,
     MatDividerModule,
     MatListModule,
-    HomeModule,
     MatCardModule,
     MatTableModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    NgChartsModule
+
   ],
 
-  providers: [AuthService, AuthGuard, UserComponent],
+    providers: [AuthService, AuthGuard, UserComponent,CategoryComponent,
+    UploadImageComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

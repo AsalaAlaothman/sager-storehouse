@@ -21,4 +21,11 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'product_categories');
     }
+
+    public static function store_image($user_id, $file, $key)
+    {
+        $name = $user_id . "_" . $key . "." . "jpeg";
+        $path = $file->storeAs("public/products", $name);
+        return $path;
+    }
 }

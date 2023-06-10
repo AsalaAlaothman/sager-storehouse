@@ -19,10 +19,10 @@ background-color: rgb(165, 161, 161);
 
 .logo
 {
-  width: 100px;
+  width: 90%;
   border-radius: 50%;
-  margin: 15% 15%;
   z-index: inherit;
+  height: auto;
 }
 
 

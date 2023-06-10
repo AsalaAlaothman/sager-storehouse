@@ -1,1 +1,43 @@
-<p>home works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <mat-card class="text-xl-center w-80 h-100 card-button">
+        <div class="my-auto">
+          <mat-icon class="fw-bold"> view_module</mat-icon>
+        </div>
+        <div>
+          <h4>{{data?.category}} Categories </h4>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-sm-3">
+      <mat-card class="text-xl-center w-80 h-100 card-butt on">
+        <div class="my-auto">
+          <mat-icon class="fw-bold"> supervisor_account</mat-icon>
+        </div>
+        <div>
+          <h4> {{data?.users}} Users </h4>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-sm-3">
+      <mat-card class="text-xl-center w-80 h-100 card-button">
+        <div class="my-auto">
+          <mat-icon class="fw-bold"> shopping_basket</mat-icon>
+        </div>
+        <div>
+          <h4>{{data?.product}} Products </h4>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [legend]="lineChartLegend"
+      ></canvas>
+    </div>
+  </div>

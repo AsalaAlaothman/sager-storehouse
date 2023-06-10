@@ -3,7 +3,7 @@
   border: transparent;
 }
 
-label{
+label {
   color: white;
   margin-bottom: 10px;
 }
@@ -11,3 +11,4 @@ label{
 .error{
   color:#720303;
 }
+

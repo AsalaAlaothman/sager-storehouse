@@ -22,9 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('id','!=',auth()->id())->paginate(20);
         return response()->json([
-            'status' => 201,
+            'status' => 200,
             'data' => UserResource::collection($users),
         ], 200);
     }
@@ -88,7 +88,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         return response()->json([
-            'status' => 201,
+            'status' => 200,
             'data' => new  UserResource($user),
         ], 200);
     }
@@ -147,6 +147,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+
         DB::beginTransaction();
         try {
             $user = User::where('id', $id)->first();

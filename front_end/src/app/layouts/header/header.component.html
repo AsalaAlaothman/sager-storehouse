@@ -4,14 +4,14 @@
     [opened]="(isHandset$ | async) === false">
     <br>
     <mat-toolbar class="m-auto">
-      <img class="logo" [src]="clinic_logo" alt="">
+      <img class="logo" [src]="App_logo" alt="">
     </mat-toolbar>
     <br>
     <mat-divider></mat-divider>
     <mat-nav-list>
       <a mat-list-item routerLinkActive="active" routerLink="/users">Users</a>
-      <a mat-list-item routerLinkActive="active" routerLink="/doctors">doctors</a>
-      <a mat-list-item routerLinkActive="active" routerLink="/chronic-diseases">chronic-diseases</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/categories">Categories</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/products">Products</a>
       <a mat-list-item routerLinkActive="active" (click)="logout()">LogOut</a>
 
 

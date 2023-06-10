@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3" (click)="openAddItemDialog()">
+      <mat-card class="text-xl-center w-50 card-button">
+        <div class="my-auto">
+          <mat-icon class="fw-bold"> add_circle</mat-icon>
+        </div>
+        <div>
+          <h4> Add Category </h4>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="w-100 mx-auto my-5 justify-content-center ">
+    <mat-card>
+      <div>
+        <button class="btn btn-primary" (click)="getcategories(page_number-1)" *ngIf="page_number > 1"  >Previous</button>
+        <button  class="btn btn-primary" (click)="getcategories(page_number+1)"  >Next</button>
+      </div>
+      <mat-table [dataSource]="dataSource" class=" m-auto w-100 text-xl-center">
+        <ng-container  matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-cell *matCellDef="let element; let indexOfelement = index;">
+            <mat-icon class="icon" (click)="onDelete(element.id, indexOfelement)"> delete </mat-icon>
+            <mat-icon class="icon" (click)="onUpdate(element.id)"> edit </mat-icon>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Header and Row Declarations -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let element; let indexOfelement = index; columns: displayedColumns">
+
+        </mat-row>
+      </mat-table></mat-card>
+  </div>
+</div>

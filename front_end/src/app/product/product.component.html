@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3" (click)="openAddItemDialog()">
+      <mat-card class="text-xl-center w-50 card-button">
+        <div class="my-auto">
+          <mat-icon class="fw-bold"> add_circle</mat-icon>
+        </div>
+        <div>
+          <h4> Add Product </h4>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="w-100 mx-auto my-5 justify-content-center ">
+    <mat-card>
+      <div>
+        <button class="btn btn-primary" (click)="getproducts(page_number-1)" *ngIf="page_number > 1">Previous</button>
+        <button class="btn btn-primary" (click)="getproducts(page_number+1)" >Next</button>
+      </div>
+      <mat-table [dataSource]="dataSource" class=" m-auto w-100 text-xl-center">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="categories_count">
+          <mat-header-cell *matHeaderCellDef> Categories Count </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.category.length}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="created_by">
+          <mat-header-cell *matHeaderCellDef> Created By </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.user.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> Price "JOD"</mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{element.price}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef> Quantity  </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{element.quantity}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-cell *matCellDef="let element; let indexOfelement = index;">
+            <mat-icon class="icon" [ariaDisabled]="element.quantity == 0" (click)="onMinus(element.id, element.quantity)"> - </mat-icon>
+            <mat-icon class="icon" (click)="openConfirmationDialog(element.id)"> delete </mat-icon>
+            <mat-icon class="icon" (click)="onUpdate(element.id)"> edit </mat-icon>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Header and Row Declarations -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let element; let indexOfelement = index; columns: displayedColumns">
+
+        </mat-row>
+      </mat-table></mat-card>
+
+  </div>
+</div>

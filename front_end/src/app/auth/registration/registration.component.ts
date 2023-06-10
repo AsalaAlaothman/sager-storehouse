@@ -56,6 +56,7 @@ export class RegistrationComponent {
       .subscribe(
         (response: any) => {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('user',response.user);
           this.router.navigate(['/home']);
           window.location.reload();
 

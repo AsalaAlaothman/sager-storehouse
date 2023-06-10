@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { ApiService } from '../services/api.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { EditUserComponent } from '../User/edit-user/edit-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -13,6 +14,8 @@ import { EditUserComponent } from '../User/edit-user/edit-user.component';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
+  data: any;
+  page_number:any;
   displayedColumns: string[] = ['id', 'name', 'email', 'action'];
   id!: number;
   name!: string;
@@ -24,14 +27,21 @@ export class UserComponent {
     public dialog: MatDialog,
     private authService: AuthService,
     private apiservice: ApiService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router,
+
   ) {}
 
   ngOnInit(): void {
-    this.getUsers();
+    if (!this.authService.isAuthenticatedUser()) {
+      this.router.navigate(['/login']);
+    }
+    this.getUsers(1);
   }
 
-  getUsers() {
+  getUsers(page: number =1) {
+    this.page_number = page;
+
     const headers = new HttpHeaders({
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -39,10 +49,10 @@ export class UserComponent {
       Authorization: this.authService.token(),
     });
     this.http
-      .get(this.apiservice.apiUrl + '/users', { headers })
+      .get(this.apiservice.apiUrl + `/users?page=${page}`, { headers })
       .subscribe((response: any) => {
-
         this.dataSource = new MatTableDataSource<any>(response.data);
+
       });
   }
   openAddUserDialog() {
@@ -59,6 +69,7 @@ export class UserComponent {
   }
 
   onDelete(id: any, index: any) {
+
     const headers = new HttpHeaders({
       Accept: 'application/json',
       'Content-Type': 'application/json',

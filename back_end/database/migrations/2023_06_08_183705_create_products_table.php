@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
-            $table->longText('description');
-            $table->integer('quantity');
-            $table->float('price');
-            $table->string('image');
+            $table->longText('description')->nullable();
+            $table->integer('quantity')->default(1);
+            $table->float('price')->default(1);
+            $table->string('image')->nullable();
             $table->integer('user_id');
             $table->timestamps();
             $table->softDeletes();
